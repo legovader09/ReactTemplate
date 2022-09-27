@@ -1,11 +1,7 @@
-import domReady from 'domready';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import '../scss/index.scss';
 
-class App {
-  constructor() {
-    console.log('Test');
-  }
-}
+const App = () => <div>Hello</div>;
 
-window.App = App;
-window.domReady = domReady;
+ReactDOM.render(<App />, document.getElementById('root'));
