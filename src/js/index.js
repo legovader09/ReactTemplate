@@ -4,4 +4,4 @@ import '../scss/index.scss';
 
 const App = () => <div>App entry point.</div>;
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
