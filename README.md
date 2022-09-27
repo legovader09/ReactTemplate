@@ -1,8 +1,8 @@
-# Minimal React Template
-## Description:
+## Minimal React Template
+### Description:
 A Reactjs template transpiled with babel and bundled via webpack.
 
-## Setup
+### Requirements
 This project uses Node 16.17.1 (LTS).
 
 ### Steps
