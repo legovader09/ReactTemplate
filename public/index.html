@@ -2,11 +2,15 @@
 <html>
   <head>
     <title>[WEBSITE TITLE]</title>
+    <link rel="preload" as="style" href="./css/main.bundle.css">
     <link rel="stylesheet" href="./css/main.bundle.css">
     <noscript>Please enable JavaScript to view the website.</noscript>
   </head>
   <body>
     <div id="root"></div>
     <script src="./js/main.bundle.js"></script>
+    <script>
+      window.domReady(function() { new App(); });
+    </script>
   </body>
 </html>

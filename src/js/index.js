@@ -1,7 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import domReady from 'domready';
 import '../scss/index.scss';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <div>App Entry Point</div>,
-);
+class App {
+  constructor() {
+    console.log('Test');
+  }
+}
+
+window.App = App;
+window.domReady = domReady;
