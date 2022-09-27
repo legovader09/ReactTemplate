@@ -25,4 +25,5 @@ jobs:
     - name: Build
       run: |
         npm install
+        working-directory: ./src/js/
         npx webpack
