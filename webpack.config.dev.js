@@ -8,6 +8,7 @@ module.exports = merge(base, {
   watch: true,
   devtool: 'eval',
   devServer: {
-    contentBase: './build',
+    static: path.join(__dirname, "build"),
+    port: 3000,
   },
 });
