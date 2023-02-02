@@ -5,10 +5,14 @@ const base = require('./webpack.config.base');
 module.exports = merge(base, {
   mode: 'development',
   stats: 'none',
-  watch: true,
   devtool: 'eval',
   devServer: {
-    static: path.join(__dirname, "build"),
+    static: path.join(__dirname, 'build'),
     port: 3000,
+    https: true,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
+    historyApiFallback: true,
   },
 });

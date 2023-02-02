@@ -1,29 +1,31 @@
 const path = require('path');
 const webpack = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('@soda/friendly-errors-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  entry: './src/js/index.js',
+  entry: {
+    app: ['./src/js/index.js', './src/scss/index.scss'],
+  },
   target: ['web', 'es5'],
   plugins: [
     new webpack.ProgressPlugin(),
+    new StylelintPlugin(),
+    new ESLintPlugin({ emitError: true, failOnError: true }),
+    new FriendlyErrorsWebpackPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
       },
     }),
-    new StylelintPlugin(),
-    new ESLintPlugin({ emitError: true, failOnError: true }),
-    new FriendlyErrorsWebpackPlugin(),
-    new MiniCssExtractPlugin({ filename: './css/[name].bundle.css' }),
-    new CopyPlugin({ patterns: [{ from: "./public", to: "./" }] })
+    new MiniCssExtractPlugin({ filename: './css/bundle.css' }),
+    new CopyPlugin({ patterns: [{ from: './public', to: './' }] }),
   ],
   output: {
-    filename: './js/[name].bundle.js',
+    filename: './js/bundle.js',
     path: path.join(__dirname, 'build'),
     clean: true,
   },
