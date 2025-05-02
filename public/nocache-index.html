@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <base href="./">
     <meta charset="utf-8" />
@@ -19,14 +19,24 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400..1000;1,6..12,400..1000&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400..1000;1,6..12,400..1000&display=swap">
-    <link rel="preload" as="style" href="./css/bundle.css" type="text/css">
-    <link rel="stylesheet" href="./css/bundle.css" type="text/css">
-    <link rel="preload" href="./js/bundle.js" as="script" type="text/javascript">
+    <script class="script-loader">
+      // THIS IS USED TO HELP DEBUG THE WEBSITE ON SAFARI, WHICH CACHES THE SITE BY DEFAULT - THE TIMESTAMP HELPS PREVENT CACHING.
+      // SIMPLY COPY ALL CONTENT FROM THIS FILE TO index.html TO USE IT - JUST BE SURE TO NOT COMMIT IT BY ACCIDENT ;)
+      const timestamp = Date.now();
+      document.write(`
+            <link rel="preload" href="./js/bundle.js?t=${timestamp}" as="script">
+            <link rel="preload" href="./css/bundle.css?t=${timestamp}" as="style">
+        `);
+      document.write(`<link rel="stylesheet" href="./css/bundle.css?t=${timestamp}">`);
+    </script>
     <title>{WEBSITE TITLE}</title>
     <noscript>Please enable JavaScript to view the website.</noscript>
   </head>
   <body>
     <div id="root"></div>
-    <script async src="./js/bundle.js" type="text/javascript"></script>
+    <script class="script-loader">
+      document.write(`<script  src="./js/bundle.js?t=${timestamp}"><\/script>`);
+      document.querySelectorAll('.script-loader').forEach((el) => el.remove());
+    </script>
   </body>
 </html>
