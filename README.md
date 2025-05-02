@@ -8,7 +8,7 @@ A Reactjs template transpiled with babel and bundled via webpack.
 - Prop-types
 
 ### Requirements
-This project uses **Node 16.17.1 (LTS)**.
+This project uses **Node 18.20.4**.
 
 ### Steps
 This project uses 
