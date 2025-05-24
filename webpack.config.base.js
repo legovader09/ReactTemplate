@@ -9,7 +9,7 @@ const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: {
-    app: ['./src/js/index.js', './src/scss/app.scss'],
+    app: ['./src/js/index.js', './src/scss/index.scss'],
   },
   target: ['web', 'es5'],
   plugins: [
@@ -63,7 +63,13 @@ module.exports = {
             },
           },
           {
-            loader: 'sass-loader', // turns SASS into CSS
+            loader: 'sass-loader',
+            options: {
+              api: 'modern',
+              sassOptions: {
+                fiber: false,
+              },
+            },
           },
         ],
       },
