@@ -3,8 +3,8 @@
 A Reactjs template transpiled with babel and bundled via webpack.
 
 ### Features
-- React JS
-- Node Sass
+- React TS
+- Sass
 - Prop-types
 
 ### Requirements
