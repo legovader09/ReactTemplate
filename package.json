@@ -11,6 +11,7 @@
   "author": "Author Name",
   "license": "ISC",
   "dependencies": {
+    "@babel/runtime": "^7.27.1",
     "blazy": "^1.8.2",
     "dotenv-webpack": "^8.1.0",
     "html-react-parser": "^5.2.2",
