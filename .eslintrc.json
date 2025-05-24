@@ -1,8 +1,10 @@
 {
   "env": { "browser": true, "node": true },
   "extends": [ "plugin:react/recommended", "airbnb" ],
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaVersion":"latest"
+    "ecmaVersion": "latest",
+    "project": "./tsconfig.json"
   },
   "rules": {
     "no-plusplus": 0,
