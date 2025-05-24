@@ -9,7 +9,7 @@ const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: {
-    app: ['./src/js/index.tsx', './src/scss/index.scss'],
+    app: ['./src/ts/index.tsx', './src/scss/index.scss'],
   },
   target: ['web', 'es5'],
   plugins: [

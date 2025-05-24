@@ -11,6 +11,8 @@
   "author": "Author Name",
   "license": "ISC",
   "dependencies": {
+    "@babel/preset-typescript": "^7.27.1",
+    "@babel/runtime": "^7.27.1",
     "@types/react": "^19.1.5",
     "@types/react-dom": "^19.1.5",
     "blazy": "^1.8.2",

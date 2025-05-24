@@ -14,11 +14,20 @@
     "react/function-component-definition": [
       2,
       {
-          "namedComponents": "arrow-function",
-          "unnamedComponents": "arrow-function"
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
       }
     ],
-    "react/jsx-filename-extension": [1, { "extensions": [ ".js", ".jsx" ] }],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "react/jsx-filename-extension": "off",
     "react/jsx-props-no-spreading": "off",
     "react/jsx-one-expression-per-line": 0,
     "react/no-danger": 0,
