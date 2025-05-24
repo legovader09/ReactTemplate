@@ -9,7 +9,7 @@ const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: {
-    app: ['./src/js/index.js', './src/scss/index.scss'],
+    app: ['./src/js/index.tsx', './src/scss/index.scss'],
   },
   target: ['web', 'es5'],
   plugins: [
@@ -40,7 +40,7 @@ module.exports = {
         type: 'asset/resource',
       },
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(js|jsx|ts|tsx)$/,
         use: ['babel-loader'],
       },
       {
@@ -76,6 +76,6 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx', '.scss'],
+    extensions: ['*', '.js', '.jsx', '.scss', '.ts', '.tsx'],
   },
 };
