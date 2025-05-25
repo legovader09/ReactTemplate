@@ -67,7 +67,17 @@ module.exports = {
             options: {
               api: 'modern',
               sassOptions: {
+                silenceDeprecations: ["import", "color-functions"],
                 fiber: false,
+                quietDeps: true, // Suppress deprecation warnings from dependencies
+                logger: {
+                  warn: function(message) {
+                    return null;  // Silence warning messages
+                  },
+                  debug: function(message) {
+                    return null;  // Silence debug messages
+                  }
+                }
               },
             },
           },
