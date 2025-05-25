@@ -6,7 +6,19 @@
     "ecmaVersion": "latest",
     "project": "./tsconfig.json"
   },
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".ts", ".tsx"]
+      }
+    }
+  },
   "rules": {
+    "@typescript-eslint/no-unused-vars": "error",
+    "no-unused-vars": "off",
     "no-plusplus": 0,
     "import/prefer-default-export": 0,
     "linebreak-style": 0,
