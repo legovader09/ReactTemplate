@@ -1,18 +1,16 @@
 {
   "env": { "browser": true, "node": true },
-  "extends": [ "plugin:react/recommended", "airbnb" ],
+  "extends": ["plugin:react/recommended", "airbnb"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": "latest",
     "project": "./tsconfig.json"
   },
-  "plugins": [
-    "@typescript-eslint"
-  ],
+  "plugins": ["@typescript-eslint"],
   "settings": {
     "import/resolver": {
       "node": {
-        "extensions": [".ts", ".tsx"]
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
     }
   },
@@ -24,14 +22,16 @@
     "no-param-reassign": 0,
     "no-console": "off",
     "no-shadow": "off",
+    "@typescript-eslint/no-shadow": "error",
     "import/prefer-default-export": 0,
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
-    "import/no-unresolved": [2, { "devDependencies": true }],
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "import/no-unresolved": "error",
     "import/extensions": [
       "error",
       "ignorePackages",
       {
-        "": "never",
+        "js": "never",
+        "jsx": "never",
         "ts": "never",
         "tsx": "never"
       }
@@ -49,5 +49,6 @@
     "react/no-danger": 0,
     "react/require-default-props": 0,
     "react/no-array-index-key": 0,
+    "react/jsx-curly-brace-presence": ["error", { "props": "never", "children": "never" }]
   }
 }
