@@ -1,5 +1,39 @@
-$color-primary: #3961AE;
-$color-secondary: #abd4d2;
-$color-accent: #073A64;
-$color-background: #F4C2A2;
+$color-primary: #aaced0;
+$color-secondary: #f0f4f8;
+$color-accent: #43576a;
+$color-background: #ffffff;
 $color-light: #F1E6DE;
+
+$color-success: #1e9e1e;
+$color-warning: #ffe96c;
+$color-error: #dd2b22;
+$color-yellow: #ffedaf;
+
+$color-black: #091d1b;
+$color-dark-grey: #2c2f2f;
+$color-grey: #545958;
+$color-lighter-grey: #6d7372;
+$color-light-grey: #B5B5B5;
+$color-white: #F8F9FA;
+$color-disabled: #E0E0E0;
+$color-text: #33495d;
+$color-table-header: #76bcbf;
+
+$drop-shadow: drop-shadow(0px 4px 4px rgba(0, 0, 0, .25));
+$drop-shadow-blur: drop-shadow(0px 0px 6px rgba(0, 0, 0, .25));
+$drop-shadow-small: drop-shadow(0px 1px 1px rgba(0, 0, 0, .25));
+
+/* bootstrap overrides */
+$dropdown-link-active-bg: $color-secondary;
+$focus-ring-color: $color-background;
+$form-switch-focus-color: $color-secondary;
+$form-switch-color: $color-primary;
+$form-check-input-checked-bg-color: $color-primary;
+$navbar-light-active-color: $color-text;
+$grid-gutter-width: 16px;
+
+$container-max-widths: (
+        sm: 560px,
+        md: 799px,
+        lg: 929px,
+);
