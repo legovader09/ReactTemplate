@@ -1,10 +1,28 @@
 import React, {
-  createContext, useContext, useState, useEffect,
+  createContext, useContext, useState, useEffect, ReactNode,
 } from 'react';
-import PropTypes from 'prop-types';
-import JSZip from 'jszip';
+import * as JSZip from 'jszip';
 
-const AssetContext = createContext(null);
+type Asset = {
+  url: string;
+  type: string;
+  size: number;
+};
+
+type AssetContextType = {
+  isLoading: boolean;
+  error: Error | null;
+  getAsset: (filename: string) => Asset | undefined;
+  getAllAssets: () => [string, Asset][];
+  assetCount: number;
+} | null;
+
+interface AssetProviderProps {
+  children: ReactNode;
+  zipPath: string;
+}
+
+const AssetContext = createContext<AssetContextType>(null);
 
 export const useAssets = () => {
   const context = useContext(AssetContext);
@@ -14,10 +32,10 @@ export const useAssets = () => {
   return context;
 };
 
-export const AssetProvider = ({ children, zipPath }) => {
-  const [assets, setAssets] = useState(new Map());
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+export const AssetProvider: React.FC<AssetProviderProps> = ({ children, zipPath }) => {
+  const [assets, setAssets] = useState<Map<string, Asset>>(new Map());
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
     const loadAssets = async () => {
@@ -29,14 +47,12 @@ export const AssetProvider = ({ children, zipPath }) => {
         }
 
         const zipBlob = await response.blob();
-        const zip = new JSZip();
-        const contents = await zip.loadAsync(zipBlob);
-
-        const newAssets = new Map();
+        const zip = await JSZip.loadAsync(zipBlob);
+        const newAssets = new Map<string, Asset>();
 
         await Promise.all(
-          Object.keys(contents.files).map(async (filename) => {
-            const file = contents.files[filename];
+          Object.keys(zip.files).map(async (filename) => {
+            const file = zip.files[filename];
             if (!file.dir) {
               const blob = await file.async('blob');
               const url = URL.createObjectURL(blob);
@@ -53,7 +69,7 @@ export const AssetProvider = ({ children, zipPath }) => {
         setIsLoading(false);
       } catch (err) {
         console.error('Error loading assets:', err);
-        setError(err);
+        setError(err instanceof Error ? err : new Error('Unknown error occurred'));
         setIsLoading(false);
       }
     };
@@ -69,8 +85,7 @@ export const AssetProvider = ({ children, zipPath }) => {
     };
   }, [zipPath]);
 
-  const getAsset = (filename) => assets.get(filename);
-
+  const getAsset = (filename: string) => assets.get(filename);
   const getAllAssets = () => Array.from(assets.entries());
 
   const value = React.useMemo(() => ({
@@ -86,9 +101,4 @@ export const AssetProvider = ({ children, zipPath }) => {
       {children}
     </AssetContext.Provider>
   );
-};
-
-AssetProvider.propTypes = {
-  children: PropTypes.node.isRequired,
-  zipPath: PropTypes.string.isRequired,
 };
