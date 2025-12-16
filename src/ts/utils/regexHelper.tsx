@@ -1,7 +1,6 @@
 ﻿export const RegexHelper = {
-  checkbox: /^(true|false|1|0)$/i,
-  gender: /^(Male|Female)$/,
-  text: /^[\w\s!@#$%^&*()\-+=.,?'":;/]+$/,
-  testType: /^(Oral|Written)$/,
-  number: /^-?[0-9]+$/,
+  nameRegEx: /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/,
+  textRegEx: /^[\w\s!@#$%^&*()\-+=.,?'":;/]+$/,
+  emailRegEx: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i,
+  numberRegEx: /^-?[0-9]+$/,
 };
